@@ -67,3 +67,7 @@ Go to the root folder and start the server: `node app.js`
 
 ***Note:** The server is going to start and listen on port: **5001**
 
+#### Architecture & Technical Choices
+* the application is built using Express and NodeJS
+* routes pass down the http requests to the controllers which communicate with the MySQL database, fetch data and pass the responses back to the client/browser
+* there is an `is-authenticated.js` middleware that makes sure the user is authenticated

@@ -55,7 +55,9 @@ exports.images = (req, res) => {
   console.log("listImages was invoked");
   try {
     db.query(
-      "SELECT * FROM drawings d LEFT JOIN users u ON u.id = d.user_id",
+      `SELECT d.id as drawing_id, d.drawing_name, d.creation_time_length_seconds, d.drawing_base64_data, d.created_at, d.updated_at, u.id as user_id, u.name as user_name FROM drawings d 
+      LEFT JOIN users u 
+      ON u.id = d.user_id`,
       [],
       async (error, results) => {
         if (error) {
