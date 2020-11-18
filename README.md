@@ -14,9 +14,9 @@ Drawings are created in HTML5 Canvas and they are saved as base64 encoded string
 #### Go to the .env file at the root and change the MySQL database credentials
 ```
 DATABASE = drawings
-DATABASE_HOST = localhost
-DATABASE_USER = besian
-DATABASE_PASSWORD = password
+DATABASE_HOST = <DB HOST>
+DATABASE_USER = <DB USER>
+DATABASE_PASSWORD = <DB PASSWORD>
 JWT_SECRET = mysupersecretpassword
 JWT_EXPIRES_IN = 90d
 JWT_COOKIE_EXPIRES = 90
