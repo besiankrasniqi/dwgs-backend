@@ -1,5 +1,11 @@
 
-# DWGS
+
+<div align="center">
+<h2>DWGS</h2>
+<img  src="https://github.com/besiankrasniqi/dwgs-frontend/blob/main/images/dwgs-graphic.png?raw=true"/>
+</div>
+
+<hr/>
 
 **DWGS** is a project that enables the creation of drawings using HTML5 Canvas.
 
