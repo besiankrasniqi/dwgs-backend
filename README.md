@@ -1,5 +1,5 @@
 
-#DWGS
+# DWGS
 
 **DWGS** is a project that enables the creation of drawings using HTML5 Canvas.
 
