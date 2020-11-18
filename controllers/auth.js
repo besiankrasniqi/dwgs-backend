@@ -24,7 +24,6 @@ exports.login = async (req, res) => {
       "SELECT * FROM users WHERE email = ?",
       [email],
       async (error, results) => {
-        console.log(results);
         if (
           !results ||
           !(await bcrypt.compare(password, results[0].password))
@@ -42,8 +41,6 @@ exports.login = async (req, res) => {
           const token = jwt.sign({ id }, process.env.JWT_SECRET, {
             expiresIn: process.env.JWT_EXPIRES_IN,
           });
-
-          console.log("The Login token is: " + token);
 
           const cookieOptions = {
             expires: new Date(
@@ -70,14 +67,10 @@ exports.login = async (req, res) => {
         }
       }
     );
-  } catch (error) {
-    console.log(error);
-  }
+  } catch (error) {}
 };
 
 exports.register = (req, res) => {
-  console.log(req.body);
-
   const { name, email, password, passwordConfirmation } = req.body;
 
   db.query(
@@ -85,8 +78,6 @@ exports.register = (req, res) => {
     [email],
     async (error, results) => {
       if (error) {
-        console.log(error);
-
         // not returning the true error response message to the frontend for security reasons
         res.status(400).send({
           isRegistered: false,
@@ -111,15 +102,12 @@ exports.register = (req, res) => {
       }
 
       let hashedPassword = await bcrypt.hash(password, 8);
-      console.log(hashedPassword);
 
       db.query(
         "INSERT INTO users SET ?",
         { name: name, email: email, password: hashedPassword },
         (error, results) => {
           if (error) {
-            console.log(error);
-
             // not returning the true error response message to the frontend for security reasons
             res.status(400).send({
               isRegistered: false,
@@ -128,7 +116,6 @@ exports.register = (req, res) => {
             });
             return res;
           } else {
-            console.log(results);
             res.send({
               isRegistered: true,
               message: "User has been registered successfully",

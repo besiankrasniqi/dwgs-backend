@@ -12,14 +12,6 @@ const db = mysql.createConnection({
 
 exports.saveImage = (req, res) => {
   const { drawingName, creationTime, imageData, userId } = req.body;
-
-  console.log({
-    drawingName,
-    creationTime,
-    imageData,
-    userId,
-  });
-
   db.query(
     "INSERT INTO drawings SET ?",
     {
@@ -32,7 +24,6 @@ exports.saveImage = (req, res) => {
     },
     (error, results) => {
       if (error) {
-        console.log(error);
         res.status(400).send({
           isRegistered: false,
           message:
@@ -40,7 +31,6 @@ exports.saveImage = (req, res) => {
         });
         return res;
       } else {
-        console.log(results);
         res.send({
           isSaved: true,
           message: "Drawing was saved successfully",
@@ -52,7 +42,6 @@ exports.saveImage = (req, res) => {
 };
 
 exports.images = (req, res) => {
-  console.log("listImages was invoked");
   try {
     db.query(
       `SELECT d.id as drawing_id, d.drawing_name, d.creation_time_length_seconds, d.drawing_base64_data, d.created_at, d.updated_at, u.id as user_id, u.name as user_name FROM drawings d 
@@ -82,14 +71,12 @@ exports.images = (req, res) => {
 };
 
 exports.getImage = (req, res) => {
-  console.log("getImage was invoked");
   try {
     db.query(
       "SELECT * FROM drawings WHERE id = ?",
       [req.query.id],
       async (error, results) => {
         if (error) {
-          console.log("getImage error is:", error);
           res.status(400).send({
             message: "There was an error retrieving the image",
           });
@@ -123,7 +110,6 @@ exports.getImage = (req, res) => {
 };
 
 exports.deleteImage = (req, res) => {
-  console.log("deleteImage was invoked");
   if (req.query.id) {
     try {
       db.query(
@@ -131,7 +117,6 @@ exports.deleteImage = (req, res) => {
         [req.query.id],
         async (error, results) => {
           if (error) {
-            console.log("getImage error is:", error);
             res.status(400).send({
               isDeleted: false,
               message: "There was an error deleting the image",
