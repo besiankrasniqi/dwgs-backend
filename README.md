@@ -65,8 +65,5 @@ Go to the root folder and run: `npm i`
 
 Go to the root folder and run: `node app.js`
 
-Note: The server is going to start and listen on port: **5001**
+***Note:** The server is going to start and listen on port: **5001**
 
----
-
-That should be it
