@@ -11,7 +11,7 @@ Drawings are created in HTML5 Canvas and they are saved as base64 encoded string
 
 ### Step 1
 
-#### Go to the .env file at the root and change the MySQL database credentials
+Go to the .env file at the root and change the MySQL database credentials
 ```
 DATABASE = drawings
 DATABASE_HOST = <DB HOST>
@@ -24,7 +24,7 @@ JWT_COOKIE_EXPIRES = 90
 
 ### Step 2
 
-#### Run the following MySQL statements
+Run the following MySQL statements
 
 ```
 CREATE DATABASE drawings
@@ -59,11 +59,11 @@ CREATE TABLE `users` (
 
 ### Step 3
 
-Go to the root folder and run: `npm i`
+Go to the root folder and install packages: `npm i`
 
 ### Step 4
 
-Go to the root folder and run: `node app.js`
+Go to the root folder and start the server: `node app.js`
 
 ***Note:** The server is going to start and listen on port: **5001**
 

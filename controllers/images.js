@@ -54,19 +54,23 @@ exports.saveImage = (req, res) => {
 exports.images = (req, res) => {
   console.log("listImages was invoked");
   try {
-    db.query("SELECT * FROM drawings", [], async (error, results) => {
-      if (error) {
-        res.status(400).send({
-          message: "There was an error retrieving the list of images",
-        });
-        return res;
-      } else {
-        res.send({
-          results,
-        });
-        return res;
+    db.query(
+      "SELECT * FROM drawings d LEFT JOIN users u ON u.id = d.user_id",
+      [],
+      async (error, results) => {
+        if (error) {
+          res.status(400).send({
+            message: "There was an error retrieving the list of images",
+          });
+          return res;
+        } else {
+          res.send({
+            results,
+          });
+          return res;
+        }
       }
-    });
+    );
   } catch (error) {
     res.status(400).send({
       message: "There was an error retrieving the list of images",
